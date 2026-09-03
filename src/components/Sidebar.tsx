@@ -10,6 +10,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { PawGlyph } from "./brand";
+import { useSidebarState } from "./sidebar-state";
 
 export const NAV = [
   { n: "01", label: "HOME", to: "/" },
@@ -42,30 +43,46 @@ function Pinterest({ className = "" }: { className?: string }) {
 
 export function Sidebar() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const { collapsed, toggle } = useSidebarState();
 
   return (
-    <aside className="marble fixed inset-y-0 left-0 z-40 hidden w-[232px] flex-col overflow-y-auto border-r border-gold/25 bg-cream lg:flex">
-      <div className="px-7 pt-8">
-        <Link to="/" className="block text-center">
-          <PawGlyph className="mx-auto h-9 w-9 text-gold-deep" />
-          <div className="mt-3 font-display text-[15px] tracking-[0.16em] text-ink">
-            ALL ABOUT PAWZ
-          </div>
-          <div className="mt-1.5 flex items-center justify-center gap-2">
-            <span className="h-px w-4 bg-gold/60" />
-            <span className="text-[8px] font-bold tracking-[0.3em] text-ink-soft">
-              LUXURY GROOMING
-            </span>
-            <span className="h-px w-4 bg-gold/60" />
-          </div>
-          <div className="script mt-3 text-[19px]">From Pawz to PAWfection</div>
-        </Link>
+    <aside
+      className={`marble fixed inset-y-0 left-0 z-40 hidden flex-col overflow-y-auto overflow-x-hidden border-r border-gold/25 bg-cream transition-[width] duration-300 ease-out lg:flex ${
+        collapsed ? "w-[68px]" : "w-[232px]"
+      }`}
+    >
+      <div className={collapsed ? "px-3 pt-7" : "px-7 pt-8"}>
+        <button
+          type="button"
+          onClick={toggle}
+          aria-expanded={!collapsed}
+          aria-label={collapsed ? "Expand navigation" : "Collapse navigation"}
+          className="mx-auto flex h-11 w-11 items-center justify-center rounded-full transition-colors hover:bg-gold/10"
+        >
+          <PawGlyph className="h-9 w-9 text-gold-deep" />
+        </button>
+
+        {!collapsed && (
+          <Link to="/" className="mt-3 block text-center">
+            <div className="font-display text-[15px] tracking-[0.16em] text-ink">
+              ALL ABOUT PAWZ
+            </div>
+            <div className="mt-1.5 flex items-center justify-center gap-2">
+              <span className="h-px w-4 bg-gold/60" />
+              <span className="text-[8px] font-bold tracking-[0.3em] text-ink-soft">
+                LUXURY GROOMING
+              </span>
+              <span className="h-px w-4 bg-gold/60" />
+            </div>
+            <div className="script mt-3 text-[19px]">From Pawz to PAWfection</div>
+          </Link>
+        )}
       </div>
 
       <div className="mt-6 h-px bg-gold/20" />
 
-      <nav className="relative px-7 py-6">
-        <span className="absolute bottom-9 left-[42px] top-9 w-px bg-gold/25" />
+      <nav className={`relative py-6 ${collapsed ? "px-3" : "px-7"}`}>
+        {!collapsed && <span className="absolute bottom-9 left-[42px] top-9 w-px bg-gold/25" />}
         <ul className="space-y-[9px]">
           {NAV.map((item) => {
             const active = pathname === item.to;
@@ -73,7 +90,10 @@ export function Sidebar() {
               <li key={item.to}>
                 <Link
                   to={item.to}
-                  className="group relative flex items-center gap-3"
+                  title={item.label}
+                  className={`group relative flex items-center gap-3 ${
+                    collapsed ? "justify-center" : ""
+                  }`}
                   aria-current={active ? "page" : undefined}
                 >
                   <span
@@ -85,15 +105,17 @@ export function Sidebar() {
                   >
                     {item.n}
                   </span>
-                  <span
-                    className={`text-[10.5px] font-bold tracking-[0.13em] transition-colors ${
-                      active
-                        ? "text-gold-deep"
-                        : "text-ink-soft group-hover:text-gold-deep"
-                    }`}
-                  >
-                    {item.label}
-                  </span>
+                  {!collapsed && (
+                    <span
+                      className={`whitespace-nowrap text-[10.5px] font-bold tracking-[0.13em] transition-colors ${
+                        active
+                          ? "text-gold-deep"
+                          : "text-ink-soft group-hover:text-gold-deep"
+                      }`}
+                    >
+                      {item.label}
+                    </span>
+                  )}
                 </Link>
               </li>
             );
@@ -101,66 +123,80 @@ export function Sidebar() {
         </ul>
       </nav>
 
-      <div className="px-6">
-        <Link
-          to="/book"
-          className="flex items-center justify-center gap-2 border border-gold-deep/70 bg-cream-deep px-3 py-3.5 text-[9.5px] font-bold tracking-[0.14em] text-ink transition-colors hover:bg-gold-deep hover:text-on-dark"
-        >
-          <CalendarDays className="h-3.5 w-3.5 text-gold-deep" />
-          BOOK APPOINTMENT
-        </Link>
-      </div>
-
-      <div className="mt-7 space-y-3.5 px-7 text-[10.5px] leading-[1.55] text-ink-soft">
-        <div className="flex gap-2.5">
-          <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold-deep" />
-          <span>
-            123 Pawz Lane
-            <br />
-            Yourtown, ST 12345
-          </span>
-        </div>
-        <div className="flex gap-2.5">
-          <Phone className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold-deep" />
-          <span>(555) 123-PAWZ (7299)</span>
-        </div>
-        <div className="flex gap-2.5">
-          <Mail className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold-deep" />
-          <span>hello@allaboutpawz.com</span>
-        </div>
-        <div className="flex gap-2.5">
-          <Clock className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold-deep" />
-          <span>
-            Mon - Fri 8:00am - 6:00pm
-            <br />
-            Sat 8:00am - 4:00pm
-            <br />
-            Closed Sunday
-          </span>
-        </div>
-      </div>
-
-      <div className="mt-6 flex gap-2 px-7">
-        {[Facebook, Instagram, TikTok, Pinterest].map((Icon, i) => (
-          <a
-            key={i}
-            href="#"
-            aria-label="Social profile"
-            className="flex h-7 w-7 items-center justify-center rounded-full bg-ink text-cream transition-colors hover:bg-gold-deep"
+      {collapsed ? (
+        <div className="px-3 pb-6">
+          <Link
+            to="/book"
+            title="Book appointment"
+            className="flex h-9 w-full items-center justify-center border border-gold-deep/70 bg-cream-deep text-ink transition-colors hover:bg-gold-deep hover:text-on-dark"
           >
-            <Icon className="h-3.5 w-3.5" />
-          </a>
-        ))}
-      </div>
+            <CalendarDays className="h-4 w-4" />
+          </Link>
+        </div>
+      ) : (
+        <>
+          <div className="px-6">
+            <Link
+              to="/book"
+              className="flex items-center justify-center gap-2 border border-gold-deep/70 bg-cream-deep px-3 py-3.5 text-[9.5px] font-bold tracking-[0.14em] text-ink transition-colors hover:bg-gold-deep hover:text-on-dark"
+            >
+              <CalendarDays className="h-3.5 w-3.5 text-gold-deep" />
+              BOOK APPOINTMENT
+            </Link>
+          </div>
 
-      <div className="mt-7 border-t border-gold/20 px-7 py-5">
-        <a
-          href="#"
-          className="flex items-center gap-1 text-[10px] tracking-[0.06em] text-ink-soft hover:text-gold-deep"
-        >
-          Investor Information <ChevronRight className="h-3 w-3" />
-        </a>
-      </div>
+          <div className="mt-7 space-y-3.5 px-7 text-[10.5px] leading-[1.55] text-ink-soft">
+            <div className="flex gap-2.5">
+              <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold-deep" />
+              <span>
+                123 Pawz Lane
+                <br />
+                Yourtown, ST 12345
+              </span>
+            </div>
+            <div className="flex gap-2.5">
+              <Phone className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold-deep" />
+              <span>(555) 123-PAWZ (7299)</span>
+            </div>
+            <div className="flex gap-2.5">
+              <Mail className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold-deep" />
+              <span>hello@allaboutpawz.com</span>
+            </div>
+            <div className="flex gap-2.5">
+              <Clock className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold-deep" />
+              <span>
+                Mon - Fri 8:00am - 6:00pm
+                <br />
+                Sat 8:00am - 4:00pm
+                <br />
+                Closed Sunday
+              </span>
+            </div>
+          </div>
+
+          <div className="mt-6 flex gap-2 px-7">
+            {[Facebook, Instagram, TikTok, Pinterest].map((Icon, i) => (
+              <a
+                key={i}
+                href="#"
+                aria-label="Social profile"
+                className="flex h-7 w-7 items-center justify-center rounded-full bg-ink text-cream transition-colors hover:bg-gold-deep"
+              >
+                <Icon className="h-3.5 w-3.5" />
+              </a>
+            ))}
+          </div>
+
+          <div className="mt-7 border-t border-gold/20 px-7 py-5">
+            <a
+              href="#"
+              className="flex items-center gap-1 text-[10px] tracking-[0.06em] text-ink-soft hover:text-gold-deep"
+            >
+              Investor Information <ChevronRight className="h-3 w-3" />
+            </a>
+          </div>
+        </>
+      )}
     </aside>
   );
 }
