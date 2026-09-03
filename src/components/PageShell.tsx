@@ -53,7 +53,13 @@ function PageShellInner({ children }: { children: ReactNode }) {
         </nav>
       )}
 
-      <main className="lg:pl-[232px]">{children}</main>
+      <main
+        className={`transition-[padding] duration-300 ease-out ${
+          collapsed ? "lg:pl-[68px]" : "lg:pl-[232px]"
+        }`}
+      >
+        {children}
+      </main>
     </div>
   );
 }
