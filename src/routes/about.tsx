@@ -1,7 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Sparkles, Dog, ShieldCheck, Heart } from "lucide-react";
 import { PageShell, PageHeader, SiteFooter } from "@/components/PageShell";
-import { PawGlyph } from "@/components/brand";
+import {
+  PawGlyph,
+  IconLuxury,
+  IconBreeds,
+  IconSafety,
+  IconHappy,
+} from "@/components/brand";
 import shihtzu from "@/assets/dog-shihtzu.jpg";
 import salon from "@/assets/salon-interior.jpg";
 
@@ -25,10 +30,10 @@ export const Route = createFileRoute("/about")({
 });
 
 const VALUES = [
-  { Icon: Sparkles, title: "Luxury Experience", body: ["Spa-level care in", "a calming", "environment"] },
-  { Icon: Dog, title: "All Breeds Welcome", body: ["From tiny pups", "to giant breeds"] },
-  { Icon: ShieldCheck, title: "Safety & Comfort", body: ["Clean, cage-free", "care with gentle", "handling"] },
-  { Icon: Heart, title: "Happy Pups", body: ["Tail wags", "guaranteed", "every time"] },
+  { Icon: IconLuxury, title: "Luxury Experience", body: ["Spa-level care in", "a calming", "environment"] },
+  { Icon: IconBreeds, title: "All Breeds Welcome", body: ["From tiny pups", "to giant breeds"] },
+  { Icon: IconSafety, title: "Safety & Comfort", body: ["Clean, cage-free", "care with gentle", "handling"] },
+  { Icon: IconHappy, title: "Happy Pups", body: ["Tail wags", "guaranteed", "every time"] },
 ];
 
 function About() {
@@ -76,7 +81,7 @@ function About() {
             key={title}
             className={`px-5 ${i > 0 ? "lg:border-l lg:border-gold/25" : ""}`}
           >
-            <Icon className="h-6 w-6 text-gold-deep" strokeWidth={1.2} />
+            <Icon className="h-8 w-8 text-gold-deep" />
             <h3 className="mt-3 text-[11.5px] font-bold tracking-[0.06em] text-ink">{title}</h3>
             <p className="mt-2 text-[11.5px] leading-[1.7] text-ink-soft">
               {body.map((l) => (
@@ -108,7 +113,7 @@ function About() {
           width={1280}
           height={900}
           loading="lazy"
-          className="h-full min-h-[300px] w-full object-cover"
+          className="photo-blend-soft h-full min-h-[340px] w-full object-cover"
         />
       </section>
 
