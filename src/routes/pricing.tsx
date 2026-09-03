@@ -43,7 +43,7 @@ function Pricing() {
     <PageShell>
       <PageHeader n="05" label="PRICING" />
 
-      <section className="marble grid grid-cols-1 gap-10 bg-cream px-8 py-14 lg:grid-cols-[1fr_0.8fr] lg:px-12">
+      <section className="marble grid grid-cols-1 items-center gap-8 bg-cream px-8 py-12 lg:grid-cols-[1fr_0.9fr] lg:px-12">
         <div>
           <h1 className="font-display text-[38px] leading-[1.1] text-ink">
             Simple.
@@ -62,7 +62,7 @@ function Pricing() {
           width={900}
           height={1024}
           loading="lazy"
-          className="h-[300px] w-full object-contain"
+          className="mx-auto h-[400px] w-full object-cover object-top"
         />
       </section>
 
