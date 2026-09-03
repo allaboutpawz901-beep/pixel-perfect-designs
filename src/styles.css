@@ -281,34 +281,3 @@
     );
 }
 
-
-/* Photo blending — feathers image edges into the cream page so nothing
-   reads as a hard-bordered box. */
-@utility photo-blend {
-  mask-image: radial-gradient(
-    115% 108% at 55% 45%,
-    #000 46%,
-    color-mix(in srgb, #000 55%, transparent) 74%,
-    transparent 96%
-  );
-}
-
-@utility photo-blend-soft {
-  mask-image: linear-gradient(
-      to right,
-      transparent 0%,
-      #000 14%,
-      #000 100%
-    ),
-    linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%);
-  mask-composite: intersect;
-}
-
-@utility photo-halo {
-  background-image: radial-gradient(
-    60% 55% at 50% 50%,
-    color-mix(in oklab, var(--gold-light) 34%, transparent),
-    transparent 72%
-  );
-  filter: blur(38px);
-}

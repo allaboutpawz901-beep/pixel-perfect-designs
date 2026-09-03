@@ -4,19 +4,9 @@ import { Menu } from "lucide-react";
 import { useState } from "react";
 import { Sidebar, NAV } from "./Sidebar";
 import { PawGlyph } from "./brand";
-import { SidebarStateProvider, useSidebarState } from "./sidebar-state";
 
 export function PageShell({ children }: { children: ReactNode }) {
-  return (
-    <SidebarStateProvider>
-      <PageShellInner>{children}</PageShellInner>
-    </SidebarStateProvider>
-  );
-}
-
-function PageShellInner({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
-  const { collapsed } = useSidebarState();
 
   return (
     <div className="min-h-screen bg-cream">
@@ -53,13 +43,7 @@ function PageShellInner({ children }: { children: ReactNode }) {
         </nav>
       )}
 
-      <main
-        className={`transition-[padding] duration-300 ease-out ${
-          collapsed ? "lg:pl-[68px]" : "lg:pl-[232px]"
-        }`}
-      >
-        {children}
-      </main>
+      <main className="lg:pl-[232px]">{children}</main>
     </div>
   );
 }

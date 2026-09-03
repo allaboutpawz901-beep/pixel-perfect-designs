@@ -43,7 +43,7 @@ function Shop() {
     <PageShell>
       <PageHeader n="06" label="SHOP" />
 
-      <section className="marble grid grid-cols-1 items-center gap-8 bg-cream px-8 py-12 lg:grid-cols-[1fr_0.9fr] lg:px-12">
+      <section className="marble grid grid-cols-1 gap-10 bg-cream px-8 py-14 lg:grid-cols-[1fr_0.8fr] lg:px-12">
         <div>
           <h1 className="font-display text-[38px] leading-[1.1] text-ink">
             Bring the
@@ -68,7 +68,7 @@ function Shop() {
           width={900}
           height={1024}
           loading="lazy"
-          className="h-[420px] w-full object-cover object-center"
+          className="h-[340px] w-full object-cover"
         />
       </section>
 

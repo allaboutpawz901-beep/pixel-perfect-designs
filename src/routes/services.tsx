@@ -1,11 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Scissors, Bath, Droplets } from "lucide-react";
 import { PageShell, PageHeader, SiteFooter } from "@/components/PageShell";
-import {
-  PawGlyph,
-  IconShears,
-  IconBath,
-  IconDroplet,
-} from "@/components/brand";
+import { PawGlyph } from "@/components/brand";
 import doodle from "@/assets/dog-doodle.jpg";
 import svcGroom from "@/assets/svc-groom.jpg";
 import svcBath from "@/assets/svc-bath.jpg";
@@ -33,14 +29,14 @@ export const Route = createFileRoute("/services")({
 
 const ROWS = [
   {
-    Icon: IconShears,
+    Icon: Scissors,
     title: "GROOMING SERVICES",
     body: "Haircuts, styling, baths, and full grooming for all breeds.",
     img: svcGroom,
     alt: "Groomer trimming a dog's coat with scissors",
   },
   {
-    Icon: IconBath,
+    Icon: Bath,
     title: "BATH & SPA",
     body: "De-shedding, deep cleanse, and relaxing spa treatments.",
     img: svcBath,
@@ -54,7 +50,7 @@ const ROWS = [
     alt: "Dog's nails being trimmed",
   },
   {
-    Icon: IconDroplet,
+    Icon: Droplets,
     title: "ADD-ON SERVICES",
     body: "Teeth brushing, ear cleaning, fragrance, and more.",
     img: svcAddon,
@@ -67,40 +63,37 @@ function Services() {
     <PageShell>
       <PageHeader n="03" label="SERVICES" />
 
-      <section className="marble grid grid-cols-1 items-center gap-10 bg-cream px-8 py-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-4 lg:py-16 lg:pl-14 lg:pr-0">
+      <section className="marble grid grid-cols-1 gap-10 bg-cream px-8 py-14 lg:grid-cols-[1fr_0.72fr] lg:px-12">
         <div>
-          <h1 className="font-display text-[clamp(40px,4.4vw,62px)] leading-[1.06] text-ink">
+          <h1 className="font-display text-[38px] leading-[1.1] text-ink">
             Every Pup.
             <br />
             Every Breed.
             <br />
             Every Detail.
           </h1>
-          <p className="mt-7 max-w-[440px] text-[14px] leading-[1.95] text-ink-soft">
+          <p className="mt-6 max-w-[330px] text-[12.5px] leading-[1.85] text-ink-soft">
             Premium grooming services tailored to your dog's breed, coat, and lifestyle.
           </p>
           <Link to="/pricing" className="btn-gold mt-7">
             VIEW PACKAGES
           </Link>
         </div>
-        <div className="relative">
-          <div className="photo-halo pointer-events-none absolute inset-0" />
-          <img
-            src={doodle}
-            alt="Goldendoodle wearing a black bow tie"
-            width={768}
-            height={1024}
-            loading="lazy"
-            className="photo-blend relative h-[clamp(380px,44vw,620px)] w-full object-cover object-center"
-          />
-        </div>
+        <img
+          src={doodle}
+          alt="Goldendoodle wearing a black bow tie"
+          width={768}
+          height={1024}
+          loading="lazy"
+          className="h-[330px] w-full object-cover"
+        />
       </section>
 
       <section className="marble bg-cream px-8 pb-14 lg:px-12">
         <div className="divide-y divide-gold/20 border-y border-gold/25">
           {ROWS.map(({ Icon, title, body, img, alt }) => (
             <div key={title} className="grid grid-cols-[auto_1fr_auto] items-center gap-6 py-5">
-              <Icon className="h-9 w-9 text-gold-deep" />
+              <Icon className="h-7 w-7 text-gold-deep" strokeWidth={1.2} />
               <div>
                 <h2 className="text-[11.5px] font-bold tracking-[0.14em] text-ink">{title}</h2>
                 <p className="mt-1.5 max-w-[420px] text-[12px] leading-[1.7] text-ink-soft">
@@ -113,7 +106,7 @@ function Services() {
                 width={640}
                 height={512}
                 loading="lazy"
-                className="photo-blend-soft h-[86px] w-[230px] object-cover"
+                className="h-[70px] w-[190px] object-cover"
               />
             </div>
           ))}
