@@ -76,16 +76,18 @@ export function SiteFooter() {
         </div>
 
         <nav className="flex flex-wrap gap-x-7 gap-y-2">
-          {[
-            ["HOME", "/"],
-            ["ABOUT US", "/about"],
-            ["SERVICES", "/services"],
-            ["PRICING", "/pricing"],
-            ["SHOP", "/shop"],
-            ["GALLERY", "/gallery"],
-            ["BOOK", "/book"],
-            ["CONTACT", "/contact"],
-          ].map(([label, to]) => (
+          {(
+            [
+              ["HOME", "/"],
+              ["ABOUT US", "/about"],
+              ["SERVICES", "/services"],
+              ["PRICING", "/pricing"],
+              ["SHOP", "/shop"],
+              ["GALLERY", "/gallery"],
+              ["BOOK", "/book"],
+              ["CONTACT", "/contact"],
+            ] as const
+          ).map(([label, to]) => (
             <Link
               key={to}
               to={to}
