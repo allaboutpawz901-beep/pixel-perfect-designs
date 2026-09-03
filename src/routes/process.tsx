@@ -63,7 +63,7 @@ function Process() {
     <PageShell>
       <PageHeader n="04" label="OUR PROCESS" />
 
-      <section className="marble grid grid-cols-1 gap-10 bg-cream px-8 py-14 lg:grid-cols-[1fr_0.85fr] lg:px-12">
+      <section className="marble grid grid-cols-1 items-center gap-8 bg-cream px-8 py-12 lg:grid-cols-[1fr_1fr] lg:px-12">
         <div>
           <h1 className="font-display text-[38px] leading-[1.1] text-ink">
             A Seamless
@@ -102,7 +102,7 @@ function Process() {
           width={900}
           height={1024}
           loading="lazy"
-          className="h-full max-h-[520px] w-full object-contain"
+          className="mx-auto h-[560px] w-full object-contain"
         />
       </section>
 

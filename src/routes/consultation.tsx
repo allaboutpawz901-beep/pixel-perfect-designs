@@ -34,7 +34,7 @@ function Consultation() {
     <PageShell>
       <PageHeader n="07" label="FREE CONSULTATION" />
 
-      <section className="marble grid grid-cols-1 gap-10 bg-cream px-8 py-14 lg:grid-cols-[1fr_0.8fr] lg:px-12">
+      <section className="marble grid grid-cols-1 items-center gap-8 bg-cream px-8 py-12 lg:grid-cols-[1fr_0.9fr] lg:px-12">
         <div>
           <h1 className="font-display text-[36px] leading-[1.12] text-ink">
             The Right Care
@@ -66,7 +66,7 @@ function Consultation() {
           width={900}
           height={1024}
           loading="lazy"
-          className="h-[330px] w-full object-contain"
+          className="mx-auto h-[420px] w-full object-cover object-center"
         />
       </section>
 

@@ -33,7 +33,7 @@ function Book() {
     <PageShell>
       <PageHeader n="09" label="BOOK APPOINTMENT" />
 
-      <section className="marble grid grid-cols-1 gap-8 bg-cream px-8 py-14 lg:grid-cols-[1fr_0.7fr] lg:px-12">
+      <section className="marble grid grid-cols-1 items-center gap-8 bg-cream px-8 py-10 lg:grid-cols-[1fr_0.9fr] lg:px-12">
         <div>
           <h1 className="font-display text-[38px] leading-[1.1] text-ink">
             Your Pup
@@ -50,7 +50,7 @@ function Book() {
           width={900}
           height={1024}
           loading="lazy"
-          className="h-[220px] w-full object-contain"
+          className="mx-auto h-[320px] w-full object-cover object-center"
         />
       </section>
 
