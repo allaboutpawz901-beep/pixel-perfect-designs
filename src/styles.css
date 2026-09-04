@@ -281,3 +281,24 @@
     );
 }
 
+
+/* ── Operations portal (admin / groomer) palette ───────────────── */
+@theme {
+  --font-adm: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-adm-bg: oklch(0.984 0.003 285);
+  --color-adm-card: oklch(1 0 0);
+  --color-adm-ink: oklch(0.23 0.03 285);
+  --color-adm-ink-soft: oklch(0.42 0.02 285);
+  --color-adm-muted: oklch(0.6 0.015 285);
+  --color-adm-line: oklch(0.925 0.006 285);
+  --color-adm-primary: oklch(0.5 0.24 277);
+  --color-adm-primary-soft: oklch(0.955 0.025 277);
+  --color-adm-green: oklch(0.58 0.15 155);
+  --color-adm-green-soft: oklch(0.95 0.05 155);
+  --color-adm-amber: oklch(0.72 0.16 65);
+  --color-adm-amber-soft: oklch(0.96 0.05 75);
+  --color-adm-pink: oklch(0.65 0.2 5);
+  --color-adm-pink-soft: oklch(0.96 0.04 5);
+  --color-adm-blue: oklch(0.6 0.16 250);
+  --color-adm-blue-soft: oklch(0.96 0.035 250);
+}
